@@ -1,9 +1,8 @@
-# Write your code here!
 def game_hash
   {
     :home => {
       :team_name => "Brooklyn Nets",
-      :colors => ["Black", "White"],
+      :colors => ["Black, White"],
       :players => {
         "Alan Anderson" => {
           :number => 0,
@@ -11,7 +10,7 @@ def game_hash
           :points => 22,
           :rebounds => 12,
           :assists => 12,
-          :steals => 3,
+          :steal => 3,
           :blocks => 1,
           :slam_dunks => 1,
         },
@@ -21,7 +20,7 @@ def game_hash
           :points => 12,
           :rebounds => 12,
           :assists => 12,
-          :steals => 12,
+          :steal => 12,
           :blocks => 12,
           :slam_dunks => 7,
         },
@@ -31,7 +30,7 @@ def game_hash
           :points => 17,
           :rebounds => 19,
           :assists => 10,
-          :steals => 3,
+          :steal => 3,
           :blocks => 1,
           :slam_dunks => 15,
         },
@@ -41,7 +40,7 @@ def game_hash
           :points => 26,
           :rebounds => 12,
           :assists => 6,
-          :steals => 3,
+          :steal => 3,
           :blocks => 8,
           :slam_dunks => 5,
         },
@@ -51,7 +50,7 @@ def game_hash
           :points => 19,
           :rebounds => 2,
           :assists => 2,
-          :steals => 4,
+          :steal => 4,
           :blocks => 11,
           :slam_dunks => 1,
         },
@@ -118,85 +117,6 @@ def game_hash
   }
 end
 
-def find_player(player_name)
-  game_hash.each do |location, team_data|
-    if team_data[:players].include?(player_name)
-      return team_data[:players][player_name]
-    end
-  end
-end
-
-def num_points_scored
-end
-
-def big_shoe_rebounds
-  big_shoes_player = 0
-  rebounds = 0
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |key, value|
-      if value[:shoe] > big_shoes_player
-        big_shoes_player = value[:shoe]
-        rebounds = value[:rebounds]
-      end
-    end
-  end
-  p big_shoes_player
-  rebounds
-end
-
-def num_points_scored(player)
-  points = 0
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |key, value|
-      if key == player
-        key
-        points = value[:points]
-      end
-    end
-  end
-  points
-end
-
-def shoe_size(player)
-  shoe_size = 0
-  game_hash.each do |location, team_data|
-    team_data[:players].map do |key, value|
-      if key == player
-        shoe_size = value[:shoe]
-      end
-    end
-  end
-  shoe_size
-end
-
-def team_colors(team)
-  team_colors = Array.new
-  game_hash.each do |location, team_data|
-    if team_data[:team_name] == team
-      team_colors = team_data[:colors].flatten
-    end
-  end
-  team_colors
-end
-
-def team_names()
-  game_hash.map do |location, team_data|
-    team_data[:team_name]
-  end
-end
-
-def player_numbers(team)
-  team_numbers = Array.new
-  game_hash.each do |location, team_data|
-    if team_data[:team_name] == team
-      team_data[:players].map do |key, value|
-        team_numbers << value[:number]
-      end
-    end
-  end
-  team_numbers
-end
-
 def player_stats(player)
   player_stats = nil
   game_hash.each do |location, team_data|
@@ -208,3 +128,5 @@ def player_stats(player)
   end
   player_stats
 end
+
+p player_stats("Brendan Haywood")
