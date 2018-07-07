@@ -83,6 +83,7 @@ describe 'hashketball' do
       charlotte_numbers = [0, 2, 4, 8, 33]
       brooklyn_numbers = [0, 1, 11, 30, 31]
 
+
       expect(player_numbers("Brooklyn Nets").sort).to eq(brooklyn_numbers)
       expect(player_numbers("Charlotte Hornets").sort).to eq(charlotte_numbers)
     end
