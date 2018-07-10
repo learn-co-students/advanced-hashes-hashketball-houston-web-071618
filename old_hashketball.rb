@@ -118,7 +118,8 @@ def game_hash
 end #game_hash
 
 def get_player_stat_value(player_name, stat_value)
- game_hash.each do |location, team_data|
+  
+  game_hash.each do |location, team_data|
     #puts "team data = #{team_data}"
    
     team_data.each do |attribute, data|
@@ -141,16 +142,41 @@ def get_player_stat_value(player_name, stat_value)
     
     end
   end  
+  
 end #get_player_stat_value
 
 def num_points_scored(player_name)
-  points_value = get_player_stat_value(player_name, :points)
-  points_value
+  
+  value = get_player_stat_value(player_name, :points)
+  value
+  
 end #num_points_scored
 
 def shoe_size(player_name)
-  shoe_size_value = get_player_stat_value(player_name, :shoe)
-  shoe_size_value
+ game_hash.each do |location, team_data|
+    #puts "team data = #{team_data}"
+   
+    team_data.each do |attribute, data|
+        if attribute == :players
+          #puts "attribute = #{attribute}"
+          #puts "data = #{data}"
+          data.each do |player, info|
+            if player_name == player
+               #puts "info = #{info}"
+               info.each do |stats, value|
+                 if stats == :shoe
+                   #puts "stats = #{stats}"
+                   #puts "value = #{value}"
+                   return value
+                 end
+                end
+            end
+          end
+        end
+    
+    end
+  end  
+  
 end #shoe_size
 
 def team_colors(team_name)
@@ -246,11 +272,8 @@ def player_stats(player_name)
    end  
 end #player_stats
 
-
 def big_shoe_rebounds
  biggest_shoe = 0
- biggest_ss_player = ""
- player = ""
  game_hash.each do |location, team_data|
     #puts "team data = #{team_data}"
    
@@ -262,29 +285,23 @@ def big_shoe_rebounds
                #puts "info = #{info}"
                info.each do |stats, value|
                  if stats == :shoe
-                   #puts "shoe = #{value}"
+                   puts "shoe = #{value}"
                    if value > biggest_shoe
                      biggest_shoe = value
-                     biggest_ss_player = player
-                     #puts "biggest_shoe = #{biggest_shoe}"
-                     #puts "biggest_ss_player = #{biggest_ss_player}"
-                   end #if value > biggest_shoe
+                     puts "biggest_shoe = #{biggest_shoe}"
+                   end
                    #puts "stats = #{stats}"
                    #puts "value = #{value}"
                    
-                 end #if stats == ___
-                end #end info.each do
-          end #end data.each do
-        end #if
+                 end
+                end
+          end
+        end
     
-    end #end team_data.do
-  end #end game_hash.do
-  
-  #puts "biggest_ss_player = #{biggest_ss_player}" 
-  rebounds = get_player_stat_value(biggest_ss_player, :rebounds)
-  #puts "rebounds = #{rebounds}"
-  
-  rebounds
+    end
+  end  
+
+
 end #big_shoe_rebounds
 
 
