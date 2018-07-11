@@ -272,7 +272,84 @@ def big_shoe_rebounds
 end
 
 
+def most_points_scored
+  most_points = nil
+  name_of_most_points = ""
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      # binding.pry
+      if attribute == :players
+        data.each do |player_name, players_stats|
+            players_stats.each do |stat, value|
+              if stat.to_s =="points"
+                if most_points == nil || value>most_points
+                  most_points=value
+                  name_of_most_points=player_name.to_s
+                end
+              end
+            end
+        end
+      end
+    end
+  end
+  return name_of_most_points
+end
 
+def winning_team
+  home_points = 0
+  away_points = 0
+  game_hash[:home].each do |attribute, data|
+    # binding.pry
+    if attribute == :players
+      data.each do |player_name, players_stats|
+          players_stats.each do |stat, value|
+            if stat.to_s =="points"
+              home_points+=value
+            end
+          end
+      end
+    end
+  end
+  
+  game_hash[:away].each do |attribute, data|
+    # binding.pry
+    if attribute == :players
+      data.each do |player_name, players_stats|
+          players_stats.each do |stat, value|
+            if stat.to_s =="points"
+              away_points+=value
+            end
+          end
+      end
+    end
+  end 
+  
+  if home_points>away_points
+    return game_hash[:home][:team_name]  
+  elsif away_points>home_points
+    return game_hash[:away][:team_name]  
+  else
+    return "tie"
+  end
 
+  return name_of_most_points
+end
+
+def player_with_longest_name
+  longest_name = ""
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      # binding.pry
+      if attribute == :players
+        data.each do |player_name, players_stats|
+            if player_name.to_s.length > longest_name.length
+              longest_name = player_name.to_s
+            end
+        end
+      end
+    end
+  end
+  return longest_name
+end
 
 
