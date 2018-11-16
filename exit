@@ -1,0 +1,29 @@
+
+[1mFrom:[0m /home/bosskey59/advanced-hashes-hashketball-houston-web-071618/hashketball.rb @ line 207 Object#player_numbers:
+
+    [1;34m200[0m: [32mdef[0m [1;34mplayer_numbers[0m(team_name)
+    [1;34m201[0m:   numbers=[]
+    [1;34m202[0m:   game_hash.each [32mdo[0m |location, team_data|
+    [1;34m203[0m:     team_data.each [32mdo[0m |attribute, data|
+    [1;34m204[0m:       [1;34m# binding.pry[0m
+    [1;34m205[0m:       [32mif[0m data = team_name
+    [1;34m206[0m:         game_hash[location].each [32mdo[0m |attribute, data|
+ => [1;34m207[0m:           binding.pry
+    [1;34m208[0m:         [32mend[0m
+    [1;34m209[0m:         [1;34m# if attribute == :players[0m
+    [1;34m210[0m:         [1;34m#   data.each do |player_name, players_stats|[0m
+    [1;34m211[0m:         [1;34m#     # binding.pry[0m
+    [1;34m212[0m:         [1;34m#     if player_name.to_s== players_name [0m
+    [1;34m213[0m:         [1;34m#       players_stats.each do |stat, value|[0m
+    [1;34m214[0m:         [1;34m#         if stat.to_s =="number"[0m
+    [1;34m215[0m:         [1;34m#           numbers.push(value.to_i)[0m
+    [1;34m216[0m:         [1;34m#         end[0m
+    [1;34m217[0m:         [1;34m#       end[0m
+    [1;34m218[0m:         [1;34m#     end[0m
+    [1;34m219[0m:         [1;34m#   end[0m
+    [1;34m220[0m:         [1;34m# end[0m
+    [1;34m221[0m:       [32mend[0m
+    [1;34m222[0m:     [32mend[0m
+    [1;34m223[0m:   [32mend[0m
+    [1;34m224[0m: [32mend[0m
+
